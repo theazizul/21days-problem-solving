@@ -70,16 +70,29 @@ function divisilbeBy3And5UptoN(n) {
 }
 // divisilbeBy3And5UptoN(30); // 15 30
 
-function sumAllOddNumsUpToN(n) {
-  let sum = 0;
-  for (let i = 1; i <= n; i++) {
-    if (i % 2 == 1) {
-      sum += i;
-    }
-  }
+function sumAllEvenNumsUpToN(an) {
+  // let sum = 0;
+  // for (let i = 1; i <= n; i++) {
+  //   if (i % 2 == 1) {
+  //     sum += i;
+  //   }
+  // }
+  // console.log(sum);
+
+  // mathematically
+  const nthTerm = (an - 2) / 2 + 1;
+  console.log(nthTerm);
+  const sum = nthTerm * (nthTerm + 1);
   console.log(sum);
 }
-// sumAllOddNumsUpToN(10) // 25
+sumAllEvenNumsUpToN(10); // 25
+
+function sumAllOddNumsUpToNMathematically(an) {
+  const nthTerm = (an - 1) / 2 + 1;
+  const sum = nthTerm ** 2;
+  console.log(sum);
+}
+// sumAllOddNumsUpToNMathematically(7);
 
 function evenAndPerfectSquares(n) {
   for (let i = 1; i <= n; i++) {
@@ -88,4 +101,4 @@ function evenAndPerfectSquares(n) {
     }
   }
 }
-evenAndPerfectSquares(20); // 4 16
+// evenAndPerfectSquares(20); // 4 16
