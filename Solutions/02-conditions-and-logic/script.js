@@ -54,4 +54,72 @@ function isLeapYear(year) {
   if (year % 4 === 0 || year % 400 === 0 || year % 100 !== 0) return true;
   else false;
 }
-console.log(isLeapYear(2024));
+// console.log(isLeapYear(2024));
+
+
+// Progressive slab Pattern for bill, tax , total, bonuses
+ 
+// code patttern 1
+function tax(income) {
+  let tax = 0;
+  if (income <= 250000) {
+    tax = 0;
+  } else if (income <= 500000) {
+    tax = (income - 250000) * 0.05;
+  } else if (income <= 1000000) {
+    tax = (500000 - 250000) * 0.05 + (1000000 - income) * 0.2;
+  } else {
+    tax = 250000 * 0.05 + 1000000 * 0.2 + (income - 1000000) * 0.3;
+  }
+  return tax;
+}
+console.log(tax(7500), "tax");
+
+// code pattern 2
+function tax2(income) {
+  let tax = 0
+  if(income > 1000000){
+    tax += (income-1000000) * 0.3
+    income = 1000000
+  }
+  if(income > 500000){
+    tax += (income-500000) * 0.2
+    income = 500000
+  }
+  if(income > 250000){
+    tax += (income - 250000) * 0.05
+    income = 250000
+  }
+  if(income <= 250000){
+    tax += 0
+  }
+  return tax
+  }
+
+console.log(tax2(750000), "tax");
+
+// pattern 03
+function calculateTax(income) {
+  const slabs = [
+    { limit: 250000, rate: 0 },
+    { limit: 500000, rate: 0.05 },
+    { limit: 1000000, rate: 0.2 },
+    { limit: Infinity, rate: 0.3 },
+  ];
+  let tax = 0;
+  let prevLimit = 0;
+
+  for (const slab of slabs) {
+    if (income > slab.limit) {
+      tax += (slab.limit - prevLimit) * slab.rate;
+      prevLimit = slab.limit;
+    } else {
+      tax += (income - prevLimit) * slab.rate;
+      break;
+    }
+  }
+
+  return tax;
+}
+
+console.log(calculateTax(750000));
