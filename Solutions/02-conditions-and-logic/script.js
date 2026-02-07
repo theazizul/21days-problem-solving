@@ -56,9 +56,8 @@ function isLeapYear(year) {
 }
 // console.log(isLeapYear(2024));
 
-
 // Progressive slab Pattern for bill, tax , total, bonuses
- 
+
 // code patttern 1
 function tax(income) {
   let tax = 0;
@@ -73,30 +72,30 @@ function tax(income) {
   }
   return tax;
 }
-console.log(tax(7500), "tax");
+// console.log(tax(7500), "tax");
 
 // code pattern 2
 function tax2(income) {
-  let tax = 0
-  if(income > 1000000){
-    tax += (income-1000000) * 0.3
-    income = 1000000
+  let tax = 0;
+  if (income > 1000000) {
+    tax += (income - 1000000) * 0.3;
+    income = 1000000;
   }
-  if(income > 500000){
-    tax += (income-500000) * 0.2
-    income = 500000
+  if (income > 500000) {
+    tax += (income - 500000) * 0.2;
+    income = 500000;
   }
-  if(income > 250000){
-    tax += (income - 250000) * 0.05
-    income = 250000
+  if (income > 250000) {
+    tax += (income - 250000) * 0.05;
+    income = 250000;
   }
-  if(income <= 250000){
-    tax += 0
+  if (income <= 250000) {
+    tax += 0;
   }
-  return tax
-  }
+  return tax;
+}
 
-console.log(tax2(750000), "tax");
+// console.log(tax2(750000), "tax");
 
 // pattern 03
 function calculateTax(income) {
@@ -122,4 +121,49 @@ function calculateTax(income) {
   return tax;
 }
 
-console.log(calculateTax(750000));
+// console.log(calculateTax(750000));
+
+function incomeTax(income) {
+  const slabs = [
+    { limit: 250000, rate: 0 },
+    { limit: 500000, rate: 0.05 },
+    { limit: 1000000, rate: 0.2 },
+    { limit: Infinity, rate: 0.3 },
+  ];
+  let tax = 0;
+  let prevLimit = 0;
+  for (const { limit, rate } of slabs) {
+    if (income > limit) {
+      tax += (limit - prevLimit) * rate;
+      prevLimit = limit;
+    } else {
+      tax += (income - prevLimit) * rate;
+      break;
+    }
+  }
+  return tax;
+}
+
+// console.log(incomeTax(750000));
+
+function incomeTaxx(income) {
+  const slabs = [
+    { limit: 250000, rate: 0 },
+    { limit: 500000, rate: 0.05 },
+    { limit: 1000000, rate: 0.2 },
+    { limit: Infinity, rate: 0.3 },
+  ];
+  let tax = 0;
+  let prevLimit = 0;
+  for (const { limit, rate } of slabs) {
+    if (income > limit) {
+      tax += (limit - prevLimit) * rate;
+      prevLimit = limit;
+    } else {
+      tax += (income - prevLimit) * rate;
+      break;
+    }
+  }
+  return tax
+}
+console.log(incomeTaxx(750000));
